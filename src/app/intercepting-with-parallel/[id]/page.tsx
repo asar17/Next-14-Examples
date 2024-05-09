@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 
 export default function ImgDetails  ({params}:{params:{id:string}}) {
-    const resImg:ImgProps =dataImages.find((img)=>img?.id === params?.id)
+    const resImg =dataImages.find((img)=>img?.id === params?.id)
     return(
         <div>
             <Image
