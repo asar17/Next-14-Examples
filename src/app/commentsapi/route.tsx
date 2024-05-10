@@ -1,7 +1,11 @@
+import {type NextRequest} from 'next/server';
 import {comments} from './data'
 //to get all comments
-export async function GET(){
-    return Response.json(comments)
+export async function GET(request:NextRequest){
+    const searchParams= request.nextUrl.searchParams;
+    const query= searchParams.get("query")
+    const filterComments= query?comments.filter((comment)=>comment.comment.includes(query)):comments;
+    return Response.json(filterComments)
 }
 
 //to inserts new object
